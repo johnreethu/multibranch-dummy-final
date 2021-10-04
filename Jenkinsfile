@@ -1,14 +1,7 @@
 pipeline 
 {
-    agent
-    {
-        node 
-	{
-            label 'maven'    
-        }
-    }
-    
-   stages 
+    agent any
+    stages 
     {
         stage ('checkout') 
         {
@@ -25,41 +18,34 @@ pipeline
               stage ('Build with Java 8') 
               
                 {
-                  agent 
-		 	{
-		   		node
-                    		{
-                        		label 'java8'
-                    		}
-		 
-                    		steps 
-                    		{
-                        		//sh 'mvn compile'
-                        		echo "This is my build step"
-                    		}
-                	}  
-			
-		}
-                stage ('build with java 11') 
+                agent 
+                    {
+                        label 'java8'
+                    }
+                    
+                    steps 
+                    {
+                        //sh 'mvn compile'
+                        echo "This is my build step"
+                    }
+                }  
+                stage ('build with Java 11') 
                 {
-                  agent 
-		  	{
-		   		node		
-                    		{
-                        		label 'java11'
-                    		}
+                agent 
+                    {
+                        label 'java11'
+                    }
                   
-                    		steps 
-                    		{
-                        		//sh 'mvn compile'
-                        		echo "This is my build step"
-                    		}
+                    steps 
+                    {
+                        //sh 'mvn compile'
+                        echo "This is my build step"
+                    }
                 
-                	}  
+                }  
                 
-            	}  
-       	  }
-     }
+            }  
+        }
        
       stage ('test') 
       {
@@ -134,4 +120,3 @@ pipeline
         }
     }
 }
-
