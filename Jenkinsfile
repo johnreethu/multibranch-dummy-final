@@ -27,7 +27,7 @@ pipeline
                 {
                   agent 
                     {
-                        label 'Java8'
+                        label 'java8'
                     }
                    
                     steps 
@@ -36,11 +36,11 @@ pipeline
                         echo "This is my build step"
                     }
                 }  
-                stage ('build with Java 11') 
+                stage ('build with java 11') 
                 {
                   agent 
                     {
-                        label 'Java11'
+                        label 'java11'
                     }
                 
                     steps 
