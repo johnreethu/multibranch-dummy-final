@@ -51,11 +51,11 @@ pipeline
               stage ('Build with Java 8') 
               
                 {
-                /*    agent 
+                  agent 
                     {
                         label 'java8'
                     }
-                */    
+                    
                     steps 
                     {
                         //Maven is being called through the Agent with the label "java8' that is tagged in the label section of Agent configuration. Same applies to below secment too.
@@ -65,11 +65,11 @@ pipeline
                 }  
                 stage ('build with Java 11') 
                 {
-                 /*  agent 
+                 agent 
                     {
                         label 'java11'
                     }
-                 */   
+                   
                     steps 
                     {
                         sh 'mvn compile'
@@ -95,6 +95,7 @@ pipeline
                 }
             
             }  
+	    /*
             stage ('Code Coverage') 
             {
                 steps 
@@ -103,7 +104,7 @@ pipeline
                     echo "This is my build step"
                 }
             
-            }  
+            }  */
             stage ('System Test') 
             {
                 //This is the sample segment only for parallel pipeline. Since it is simple native java application, unit test covers the test scenarios.
@@ -123,7 +124,7 @@ pipeline
             // The code below is with "docker' label as mentioned in Agent1. Any agent with a label name "docker" will be picked and code will be executed.
             //The code is executed only for "main" branch.
 	    //Values are fetched from environment variables.
-            /*
+            
 		agent 
 		{
                 	node 
@@ -141,7 +142,7 @@ pipeline
 			    {
                     		steps 
 				    {
-                        		sh 'docker build -t $GITHUB_REPO/$APP-NAME .'
+                        		sh 'docker build -t $GITHUB_REPO/$APP .'
                     		}
                 	}
                 	stage('Login into docker hub') 
@@ -158,12 +159,12 @@ pipeline
                     		steps 
 		  		{
 					sh '''
-					docker tag $GITHUB_REPO/$APP-NAME $DOCKERIMAGE:v-$BUILD_NUMBER
+					docker tag $GITHUB_REPO/$APP $DOCKERIMAGE:v-$BUILD_NUMBER
 					docker push $DOCKERIMAGE:v-$BUILD_NUMBER
 					'''
                     		}
                 	}
-            } */
+            }
 
             
             post  ('logout')
