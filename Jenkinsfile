@@ -15,7 +15,7 @@ pipeline
         	DOCKERIMAGE = 'johnreethu/parallel-pipeline' 
         	DOCKERCREDENTIALS= credentials('repo-access-token')
         	CI = 'true'
-        	GITHUB-REPO = 'github.com/johnreethu/parallel-pipeline'
+        	GITHUB_REPO = 'johnreethu/parallel-pipeline'
 		APP-NAME = 'DockerFile'
 	}
 	
@@ -141,7 +141,7 @@ pipeline
 			    {
                     		steps 
 				    {
-                        		sh 'docker build -t $GITHUB-REPO/$APP-NAME .'
+                        		sh 'docker build -t $GITHUB_REPO/$APP-NAME .'
                     		}
                 	}
                 	stage('Login into docker hub') 
@@ -158,7 +158,7 @@ pipeline
                     		steps 
 		  		{
 					sh '''
-					docker tag $GITHUB-REPO/$APP-NAME $DOCKERIMAGE:v-$BUILD_NUMBER
+					docker tag $GITHUB_REPO/$APP-NAME $DOCKERIMAGE:v-$BUILD_NUMBER
 					docker push $DOCKERIMAGE:v-$BUILD_NUMBER
 					'''
                     		}
