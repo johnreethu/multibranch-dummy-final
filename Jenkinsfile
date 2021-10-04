@@ -186,7 +186,7 @@ pipeline
                 echo "This is my Production step"
             }
         }
-	post 
+	post ('message')
 	 {
         	failure 
 		 {
