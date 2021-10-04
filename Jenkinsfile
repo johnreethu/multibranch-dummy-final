@@ -16,7 +16,7 @@ pipeline
         	DOCKERCREDENTIALS= credentials('repo-access-token')
         	CI = 'true'
         	GITHUB_REPO = 'johnreethu/parallel-pipeline'
-		APP-NAME = 'DockerFile'
+		APP_NAME = 'DockerFile'
 	}
 	
 	options 
