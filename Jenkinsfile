@@ -186,16 +186,5 @@ pipeline
                 echo "This is my Production step"
             }
         }
-	post ('message')
-	 {
-        	failure 
-		 {
-            		echo "Build Numbe: " $BUILD_NO
-			echo "is failed"
-			echo "For more details, Please refer below URL"
-			echo $JENKINS_URL
-			
-        	}
-    	}  
     }
 }
