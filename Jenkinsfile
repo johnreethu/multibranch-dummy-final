@@ -59,7 +59,7 @@ pipeline
                     steps 
                     {
                         //Maven is being called through the Agent with the label "java8' that is tagged in the label section of Agent configuration. Same applies to below secment too.
-			//sh 'mvn compile'
+			sh 'mvn compile'
                         echo "This is my build step"
                     }
                 }  
@@ -72,7 +72,7 @@ pipeline
                  */   
                     steps 
                     {
-                        //sh 'mvn compile'
+                        sh 'mvn compile'
                         echo "This is my build step"
                     }
                 
@@ -123,7 +123,8 @@ pipeline
             // The code below is with "docker' label as mentioned in Agent1. Any agent with a label name "docker" will be picked and code will be executed.
             //The code is executed only for "main" branch.
 	    //Values are fetched from environment variables.
-            agent 
+            /*
+		agent 
 		{
                 	node 
                 	{
@@ -162,7 +163,7 @@ pipeline
 					'''
                     		}
                 	}
-            }
+            } */
 
             
             post  ('logout')
