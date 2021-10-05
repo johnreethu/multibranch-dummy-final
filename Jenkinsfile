@@ -1,6 +1,12 @@
 pipeline 
 {
-    agent any
+    agent 
+    {
+        node 
+        {
+            label 'maven'    
+        }
+    }
     stages 
     {
         stage ('checkout') 
@@ -11,39 +17,11 @@ pipeline
             }
         }
         
-        stage ('Build')
+       stage ('Build')
         {
-           parallel
-            {
-              stage ('Build with Java 8') 
-              
-                {
-                agent 
-                    {
-                        label 'java8'
-                    }
-                    
-                    steps 
-                    {
-                        //sh 'mvn compile'
-                        echo "This is my build step"
-                    }
-                }  
-                stage ('build with Java 11') 
-                {
-                agent 
-                    {
-                        label 'java11'
-                    }
-                  
-                    steps 
-                    {
-                        //sh 'mvn compile'
-                        echo "This is my build step"
-                    }
-                
-                }  
-                
+          steps 
+	        {
+                sh 'mvn compile'
             }  
         }
        
