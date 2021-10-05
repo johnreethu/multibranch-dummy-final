@@ -18,11 +18,11 @@ pipeline
               stage ('Build with Java 8') 
               
                 {
-                /*    agent 
+                agent 
                     {
                         label 'java8'
                     }
-                */    
+                    
                     steps 
                     {
                         //sh 'mvn compile'
@@ -31,11 +31,11 @@ pipeline
                 }  
                 stage ('build with Java 11') 
                 {
-                 /*  agent 
+                agent 
                     {
                         label 'java11'
                     }
-                 */   
+                  
                     steps 
                     {
                         //sh 'mvn compile'
@@ -55,16 +55,15 @@ pipeline
             {
                 steps 
                 {
-                    sh 'mvn clean test'
+                    //sh 'mvn test'
                     echo "This is my unit test"
                 }
             
             }  
-            stage ('Code Coverage') 
+            stage ('API Test') 
             {
                 steps 
                 {
-                    sh 'mvn clean verify'
                     echo "This is my build step"
                 }
             
